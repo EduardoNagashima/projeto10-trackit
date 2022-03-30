@@ -26,10 +26,10 @@ export default function Home({ saveToken, saveImg }) {
             const { data } = response;
             saveToken(data.token);
             saveImg(data.image);
-            navigate('/habits');
+            navigate('/today');
         }).catch(err => {
             console.log(err);
-            const errorMsg = err;
+            const errorMsg = err.response.data.message;
             alert(`Opa! ${errorMsg}`);
         }).finally(() => {
             setLoading(false);

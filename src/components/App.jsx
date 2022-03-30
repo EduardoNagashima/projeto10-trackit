@@ -5,6 +5,7 @@ import "./../style/reset.css";
 import "./../style/style.css";
 import Home from "./Home";
 import SignIn from "./SignIn";
+import Today from "./Today";
 import Habits from "./Habits";
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
                     saveImg={(profileImg) => setProfileImg(profileImg)}
                 />} />
                 <Route path="/signIn" element={<SignIn />} />
+                <Route path="/today" element={<Today img={profileImg} />} />
                 <Route path="/habits" element={<Habits token={token} img={profileImg} />} />
             </Routes>
         </BrowserRouter>
