@@ -72,7 +72,7 @@ export const NewHabit = styled.div`
         display: flex;
         justify-content: flex-end;
         align-self: flex-end;
-/* 
+
         button {
             width: 84px;
             height: 35px;
@@ -81,7 +81,7 @@ export const NewHabit = styled.div`
             color: #FFFFFF;
             text-align: center;
             font-size: 15.976px;
-            } */
+            }
     }
 
 `
