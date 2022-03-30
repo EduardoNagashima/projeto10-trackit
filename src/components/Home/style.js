@@ -1,48 +1,24 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
-import Logo from "./../assets/logo.png";
-
-export default function SignIn() {
-    return (
-        <SignInScreen>
-            <img src={Logo} alt="logo" />
-            <h1>TrackIt</h1>
-            <div>
-                <form onSubmit={() => alert('Cadastrado!')}>
-                    <input type="email" placeholder="email" required />
-                    <input type="password" placeholder="senha" required />
-                    <input type="text" placeholder="name" required />
-                    <input type="text" placeholder="foto" required />
-                    <button type="submit">Cadastrar</button>
-                </form>
-            </div>
-            <Link to={'/'}>
-                <p>Já tem uma conta? Faça login!</p>
-            </Link>
-        </SignInScreen>
-    );
-}
-
-const SignInScreen = styled.section`
+export const HomeScreen = styled.main`
     @import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
 
-    img {
-        width: 150px;
+    img {   
+    width: 150px;
         margin: 0 auto;
         margin-top: 68px;
     }
 
     h1{
-    font-family: 'Playball';
-    font-weight: 400;
-    font-size: 68.982px;
-    text-align: center;
-    color: #126BA5;
-    margin-bottom: 32px;
+        font-family: 'Playball';
+        font-weight: 400;
+        font-size: 68.982px;
+        text-align: center;
+        color: #126BA5;
+        margin-bottom: 32px;
     }
 
     form {

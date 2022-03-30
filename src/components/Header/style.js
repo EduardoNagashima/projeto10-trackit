@@ -1,16 +1,6 @@
-import styled from "styled-components"
-import Perfil from "./../assets/perfil.png"
+import styled from "styled-components";
 
-export default function Header() {
-    return (
-        <PageHeader>
-            <p>TrackIt</p>
-            <img src={Perfil} alt="" />
-        </PageHeader>
-    )
-}
-
-const PageHeader = styled.header`
+export const PageHeader = styled.header`
     width: 100%;
     height: 70px;
     background: #126BA5;
