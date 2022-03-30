@@ -18,4 +18,11 @@ export const PageHeader = styled.header`
         color: #FFFFFF;
         font-family: 'Playball';
     }
+
+    img{
+        width: 51px;
+        height: 51px;
+        object-fit: cover;
+        border-radius: 100px;
+    }
 `

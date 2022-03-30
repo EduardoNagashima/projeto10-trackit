@@ -1,12 +1,10 @@
 import { PageHeader } from "./style.js";
 
-import Perfil from "./../../assets/perfil.png";
-
-export default function Header() {
+export default function Header({ img }) {
     return (
         <PageHeader>
             <p>TrackIt</p>
-            <img src={Perfil} alt="" />
+            <img src={img} alt="profile-img" />
         </PageHeader>
     )
 }

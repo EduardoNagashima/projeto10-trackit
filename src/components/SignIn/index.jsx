@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 import Logo from "./../../assets/logo.png";
 import { SignInScreen } from "./style";
 
 export default function SignIn() {
 
+    const [loading, setLoading] = useState(false);
     const [info, setInfo] = useState({
         email: '',
         name: '',
@@ -13,9 +15,48 @@ export default function SignIn() {
         password: ''
     });
 
+    const navigate = useNavigate();
     function register(e) {
+        setLoading(true);
+        const { email, name, image, password } = info;
         e.preventDefault();
-        console.log(info);
+        const API_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up";
+        axios.post(API_URL, {
+            email,
+            name,
+            image,
+            password
+        }).then(() => {
+            alert('Cadastro Realizado!');
+            navigate("/");
+        }).catch(err => {
+            const errorMsg = err.response.data.message
+            console.log(err.response);
+            alert(`Erro!!! ${errorMsg}`)
+        }).finally(() => {
+            setLoading(false);
+        });
+
+    }
+
+    function registerForm() {
+        return (
+            <form onSubmit={register}>
+                <input type="email" placeholder="email" value={info.email}
+                    onChange={e => setInfo({ ...info, email: e.target.value })}
+                    required disabled={loading} />
+                <input type="password" placeholder="senha" value={info.password}
+                    onChange={e => setInfo({ ...info, password: e.target.value })}
+                    required disabled={loading} />
+                <input type="text" placeholder="name" value={info.name}
+                    onChange={e => setInfo({ ...info, name: e.target.value })}
+                    required disabled={loading} />
+                <input type="text" placeholder="foto" value={info.image}
+                    onChange={e => setInfo({ ...info, image: e.target.value })}
+                    required disabled={loading} />
+                <button type="submit" disabled={loading}>Cadastrar</button>
+            </form>
+        );
     }
 
     return (
@@ -23,17 +64,7 @@ export default function SignIn() {
             <img src={Logo} alt="logo" />
             <h1>TrackIt</h1>
             <div>
-                <form onSubmit={register}>
-                    <input type="email" placeholder="email" value={info.email}
-                        onChange={e => setInfo({ ...info, email: e.target.value })} required />
-                    <input type="password" placeholder="senha" value={info.password}
-                        onChange={e => setInfo({ ...info, password: e.target.value })} required />
-                    <input type="text" placeholder="name" value={info.name}
-                        onChange={e => setInfo({ ...info, name: e.target.value })} required />
-                    <input type="text" placeholder="foto" value={info.image}
-                        onChange={e => setInfo({ ...info, image: e.target.value })} required />
-                    <button type="submit">Cadastrar</button>
-                </form>
+                {registerForm()}
             </div>
             <Link to={'/'}>
                 <p>Já tem uma conta? Faça login!</p>

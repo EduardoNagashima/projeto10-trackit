@@ -7,7 +7,7 @@ export const HomeScreen = styled.main`
     flex-direction: column;
 
     img {   
-    width: 150px;
+        width: 150px;
         margin: 0 auto;
         margin-top: 68px;
     }
@@ -45,31 +45,31 @@ export const HomeScreen = styled.main`
     }
 
     button{
-    width: 303px;
-    height: 45px;
-    left: 36px;
-    top: 381px;
-    background: #52B6FF;
-    border-radius: 4.63636px;
-    border: none;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20.976px;
-    line-height: 26px;
-    text-align: center;
-    color: #FFFFFF;
-    margin-bottom: 25px;
-    cursor: pointer;
+        width: 303px;
+        height: 45px;
+        left: 36px;
+        top: 381px;
+        background: #52B6FF;
+        border-radius: 4.63636px;
+        border: none;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20.976px;
+        line-height: 26px;
+        text-align: center;
+        color: #FFFFFF;
+        margin-bottom: 25px;
+        cursor: pointer;
     }
 
     p{
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13.976px;
-    line-height: 17px;
-    text-align: center;
-    text-decoration-line: underline;
-    align-self: center;
-    color: #52B6FF;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13.976px;
+        line-height: 17px;
+        text-align: center;
+        text-decoration-line: underline;
+        align-self: center;
+        color: #52B6FF;
     }
 `

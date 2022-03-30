@@ -1,10 +1,11 @@
 import { useState } from "react";
 
+import NewHabit from "../NewHabit";
 import Header from "../Header";
 import Footer from "../Footer";
-import { NewHabit, Main, Days, Button } from "./style";
+import { Main } from "./style";
 
-export default function Habits() {
+export default function Habits({ token, img }) {
 
     const [habits, setHabits] = useState([]);
 
@@ -17,34 +18,15 @@ export default function Habits() {
 
     return (
         <>
-            <Header />
-
+            <Header img={img} />
             <Main>
-
                 <div>
                     <p>Meus hábitos</p>
                     <button>+</button>
                 </div>
 
                 {getHabits()}
-
-                <NewHabit>
-                    <input type="text" placeholder="nome do hábito" required />
-                    <Days>
-                        <button>D</button>
-                        <button>S</button>
-                        <button>T</button>
-                        <button>Q</button>
-                        <button>Q</button>
-                        <button>S</button>
-                        <button>S</button>
-                    </Days>
-                    <div>
-                        <Button cancel>Cancelar</Button>
-                        <Button>Salvar</Button>
-                    </div>
-                </NewHabit>
-
+                <NewHabit />
             </Main>
 
             <Footer />
