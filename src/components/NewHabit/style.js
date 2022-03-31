@@ -10,11 +10,13 @@ export const CreateHabit = styled.div`
     flex-direction: column;
     padding: 18px;
     margin-bottom: 30px;
-    input{
-        font-family: 'Lexend Deca';
+`
+
+export const NewHabitInput = styled.input`
+  font-family: 'Lexend Deca';
         width: 303px;
         height: 45px;
-        background: #FFFFFF;
+        background-color: ${props=> props.disabled ? '#F2F2F2' : '#FFFFFF'};
         border: 1px solid #D5D5D5;
         box-sizing: border-box;
         border-radius: 5px;
@@ -26,8 +28,8 @@ export const CreateHabit = styled.div`
         ::placeholder{ 
             color: #DBDBDB;
         }
-    }
 `
+
 
 export const Days = styled.div`
     display: flex;
@@ -60,7 +62,17 @@ export const Button = styled.button`
     border-radius: 4.63636px;
     font-size: 15.976px;
     border: none;
-    color: ${props=>props.cancel ? '#52B6FF' : '#FFFFFF'};
-    background: ${props=>props.cancel ? '#FFFFFF' : '#52B6FF'};
-        
+    color: #52B6FF;
+    background: #FFFFFF;
+`
+
+export const ConfirmButton = styled.button`
+    width: 84px;
+    height: 35px;
+    font-family: 'Lexend Deca';
+    border-radius: 4.63636px;
+    font-size: 15.976px;
+    border: none;
+    color: #FFFFFF;
+    background: ${props=>props.disabled ? '#91cffd' : '#66b8fd'}
 `

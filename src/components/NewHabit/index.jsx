@@ -1,13 +1,20 @@
 import axios from "axios";
 import { useState, useContext } from "react";
 import UserContext from "../../contexts/UserContext";
-import { Buttons, Button, Days, DaysButton, CreateHabit } from "./style";
+import { Buttons, Button, Days, DaysButton, CreateHabit, ConfirmButton, NewHabitInput } from "./style";
+import { Rings } from 'react-loader-spinner';
 
 export default function NewHabit({ reloadPage, closeNewHabit }) {
     const [habit, setHabit] = useState('');
     const [days, setDays] = useState([]);
     const [loading, setLoading] = useState(false);
     const { token } = useContext(UserContext);
+    const loader = <Rings
+        color="#FFF"
+        height="35"
+        width="84"
+        ariaLabel='loading'
+    />
 
     function createHabit(e) {
         e.preventDefault();
@@ -49,14 +56,15 @@ export default function NewHabit({ reloadPage, closeNewHabit }) {
 
     return (
         <CreateHabit>
+            {console.log(habit)}
             <form onSubmit={createHabit}>
-                <input type="text"
+                <NewHabitInput type="text"
                     placeholder="nome do hábito"
                     onChange={e => setHabit(e.target.value)}
-                    value={habit.name}
+                    value={habit}
                     disabled={loading}
                     required />
-                <Days required>
+                <Days>
                     {['D', 'S', 'T', 'Q', 'Q', 'S', 'S'].map((el, index) => (
                         <DaysButton key={index} disabled={loading}
                             selected={days.includes(index)} type="button"
@@ -65,8 +73,8 @@ export default function NewHabit({ reloadPage, closeNewHabit }) {
                 </Days>
 
                 <Buttons>
-                    <Button type="button" cancel>Cancelar</Button>
-                    <Button type="submit">Salvar</Button>
+                    <Button disabled={loading} type="button" cancel onClick={() => closeNewHabit()}>Cancelar</Button>
+                    <ConfirmButton disabled={loading} type="submit">{loading ? loader : 'Salvar'}</ConfirmButton>
                 </Buttons>
             </form>
         </CreateHabit>

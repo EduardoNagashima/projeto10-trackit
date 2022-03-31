@@ -32,7 +32,6 @@ export default function Habits({ img }) {
         });
     }
 
-
     const habitList = habits.map(habit => {
         const { id, name, days } = habit;
         return (
@@ -48,23 +47,20 @@ export default function Habits({ img }) {
         );
     })
 
-
     function deleteHabit(id) {
         const confirmDelete = window.confirm("Tem certeza que quer apagar esse hábito?");
 
         if (confirmDelete) {
             const API_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`;
-            const config = {
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-            }
-            axios.delete(API_URL, config).then(() => {
-                getHabit();
-            }).catch(err => {
-                console.log(err);
-                alert('Algo deu errado!');
-            })
+            const config = { headers: { "Authorization": `Bearer ${token}` } }
+            axios.delete(API_URL, config)
+                .then(() => {
+                    getHabit();
+                })
+                .catch(err => {
+                    console.log(err);
+                    alert('Algo deu errado!');
+                })
         }
     }
 
@@ -80,7 +76,9 @@ export default function Habits({ img }) {
                     <p>Meus hábitos</p>
                     <NewHabitButton onClick={toggleButton}>+</NewHabitButton>
                 </UserHabits>
-                {newHabit && <NewHabit reloadPage={() => getHabit()} closeNewHabit={() => toggleButton()} />}
+                {newHabit && <NewHabit
+                    reloadPage={() => getHabit()}
+                    closeNewHabit={() => toggleButton()} />}
                 {habits.length > 0 ? habitList : <span>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</span>}
             </Main>
             <Footer />

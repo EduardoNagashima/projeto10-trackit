@@ -9,10 +9,12 @@ export const TodayPage = styled.main`
     background: #E5E5E5;
     padding-top: 28px;
     padding: 20px;
+
     p{
         color: #126BA5;
         font-size: 22.976px;
     }
+    
     span {
         font-size: 17.976px;
         color: #BABABA;
