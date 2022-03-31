@@ -7,6 +7,7 @@ import Home from "./Home";
 import SignIn from "./SignIn";
 import Today from "./Today";
 import Habits from "./Habits";
+import Historic from "./Historic";
 
 export default function App() {
     const [token, setToken] = useState(null);
@@ -21,6 +22,7 @@ export default function App() {
                 />} />
                 <Route path="/signIn" element={<SignIn />} />
                 <Route path="/today" element={<Today img={profileImg} />} />
+                <Route path="/historic" element={<Historic img={profileImg} />} />
                 <Route path="/habits" element={<Habits token={token} img={profileImg} />} />
             </Routes>
         </BrowserRouter>
