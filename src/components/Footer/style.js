@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 export const PageFooter = styled.footer`
     min-width: 375px;
     width: 100%;
@@ -24,3 +25,7 @@ export const PageFooter = styled.footer`
 export const StyledLink  = styled(Link)`
      text-decoration: none;
 `;
+
+export const progressDiv = styled.div`
+
+`

@@ -1,24 +1,71 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
+import axios from "axios";
 
+import UserContext from "../../contexts/UserContext";
 import NewHabit from "../NewHabit";
 import Header from "../Header";
 import Footer from "../Footer";
-import UserContext from "../../contexts/UserContext";
-import { Main, UserHabits, NewHabitButton } from "./style";
+import { Main, UserHabits, NewHabitButton, Habit, Button } from "./style";
 
 export default function Habits({ img }) {
 
     const [habits, setHabits] = useState([]);
     const [newHabit, setNewHabit] = useState(false);
-    const { token, setToken } = useContext(UserContext);
+    const { token } = useContext(UserContext);
 
-    console.log(token);
+    useEffect(() => {
+        getHabit();
+    }, []);
 
-    function getHabits() {
-        if (habits.length > 0) {
-            return <span>Map dos habitos na tela</span>
+    function getHabit() {
+        const API_URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits';
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
         }
-        return <span>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</span>
+        axios.get(API_URL, config).then(response => {
+            const { data } = response;
+            setHabits(data);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
+
+    const habitList = habits.map(habit => {
+        const { id, name, days } = habit;
+        return (
+            <Habit key={id}>
+                <ion-icon onClick={() => deleteHabit(id)} name="trash-outline"></ion-icon>
+                <h1>{name}</h1>
+                <div>
+                    {['D', 'S', 'T', 'Q', 'Q', 'S', 'S'].map((el, index) =>
+                        <Button key={index} selected={days.includes(index)}>{el}</Button>
+                    )}
+                </div>
+            </Habit>
+        );
+    })
+
+
+    function deleteHabit(id) {
+        const confirmDelete = window.confirm("Tem certeza que quer apagar esse hábito?");
+
+        if (confirmDelete) {
+            const API_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`;
+            const config = {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+            axios.delete(API_URL, config).then(() => {
+                getHabit();
+            }).catch(err => {
+                console.log(err);
+                alert('Algo deu errado!');
+            })
+        }
     }
 
     function toggleButton() {
@@ -28,18 +75,14 @@ export default function Habits({ img }) {
     return (
         <>
             <Header img={img} />
-
             <Main>
-
                 <UserHabits>
                     <p>Meus hábitos</p>
                     <NewHabitButton onClick={toggleButton}>+</NewHabitButton>
                 </UserHabits>
-
-                {newHabit && <NewHabit />}
-                {getHabits()}
+                {newHabit && <NewHabit reloadPage={() => getHabit()} closeNewHabit={() => toggleButton()} />}
+                {habits.length > 0 ? habitList : <span>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</span>}
             </Main>
-
             <Footer />
         </>
     );

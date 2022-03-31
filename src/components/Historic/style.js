@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Main = styled.main`
     background: #E5E5E5;
+    min-width: 375px;
     width: 100%;
     height: 100vh;
     padding: 20px;

@@ -44,8 +44,8 @@ export const DaysButton = styled.button`
     box-sizing: border-box;
     border-radius: 5px;
     font-size: 19.976px;
-    color: ${props=> props.selected ? '#DBDBDB' : '#FFFFFF' };
-    background: ${props=> props.selected ? '#FFFFFF' : '#DBDBDB'};
+    color: ${props=> props.selected ? '#FFFFFF' : '#DBDBDB' };
+    background: ${props=> props.selected ? '#DBDBDB' : '#FFFFFF'};
 `
 
 export const Buttons = styled.div`

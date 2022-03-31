@@ -1,31 +1,50 @@
-import { useState } from "react";
+import axios from "axios";
+import { useState, useContext } from "react";
+import UserContext from "../../contexts/UserContext";
 import { Buttons, Button, Days, DaysButton, CreateHabit } from "./style";
 
-export default function NewHabit() {
+export default function NewHabit({ reloadPage, closeNewHabit }) {
     const [habit, setHabit] = useState('');
     const [days, setDays] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const { token } = useContext(UserContext);
 
     function createHabit(e) {
         e.preventDefault();
-        const API_URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits';
+
+        if (days.length > 0) {
+            setLoading(true);
+            const API_URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits';
+            const config = {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+            axios.post(API_URL, {
+                name: habit,
+                days: days
+            }, config).then(() => {
+                alert('Novo hábito criado!');
+                closeNewHabit();
+                reloadPage();
+            }).catch(err => {
+                alert('Opa! Algo deu errado!')
+                console.log(err);
+            }).finally(() => {
+                setLoading(false);
+            })
+            return;
+        }
+        alert('Selecione ao menos um dia!');
     }
 
     function selectDay(num) {
-        console.log(days)
-        console.log(num)
-        if (days.find(el => el === num)) {
-            console.log('entrou no if, já existe');
-            const newArray = days.filter(el => {
-                if (el !== num) {
-                    return el;
-                }
-            });
+        if (days.includes(num)) {
+            const newArray = days.filter(el => el !== num);
             setDays(newArray);
-        } else {
-            console.log('entrou no else (não repetiu)')
-            setDays([...days, num])
+            return;
         }
-        console.log(days);
+        setDays([...days, num])
     }
 
     return (
@@ -33,16 +52,16 @@ export default function NewHabit() {
             <form onSubmit={createHabit}>
                 <input type="text"
                     placeholder="nome do hábito"
-                    onChange={e => setHabit({ ...habit, name: e.target.value })}
-                    value={habit.name} required />
-                <Days>
-                    <DaysButton selected={days.find(el => el === 0) ? true : false} type="button" onClick={() => selectDay(0)}>D</DaysButton>
-                    <DaysButton selected={days.find(el => el === 1) ? true : false} type="button" onClick={() => selectDay(1)}>S</DaysButton>
-                    <DaysButton selected={days.find(el => el === 2) ? true : false} type="button" onClick={() => selectDay(2)}>T</DaysButton>
-                    <DaysButton selected={days.find(el => el === 3) ? true : false} type="button" onClick={() => selectDay(3)}>Q</DaysButton>
-                    <DaysButton selected={days.find(el => el === 4) ? true : false} type="button" onClick={() => selectDay(4)}>Q</DaysButton>
-                    <DaysButton selected={days.find(el => el === 5) ? true : false} type="button" onClick={() => selectDay(5)}>S</DaysButton>
-                    <DaysButton selected={days.find(el => el === 6) ? true : false} type="button" onClick={() => selectDay(6)}>S</DaysButton>
+                    onChange={e => setHabit(e.target.value)}
+                    value={habit.name}
+                    disabled={loading}
+                    required />
+                <Days required>
+                    {['D', 'S', 'T', 'Q', 'Q', 'S', 'S'].map((el, index) => (
+                        <DaysButton key={index} disabled={loading}
+                            selected={days.includes(index)} type="button"
+                            onClick={() => selectDay(index)}>{el}</DaysButton>
+                    ))}
                 </Days>
 
                 <Buttons>
