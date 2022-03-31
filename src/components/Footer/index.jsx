@@ -7,7 +7,7 @@ export default function Footer() {
                 <span>Hábitos</span>
             </StyledLink>
             <div>
-                Hoje
+                <StyledLink to="/today"> Hoje </StyledLink>
             </div>
             <StyledLink to="/historic">
                 <span>Histórico</span>

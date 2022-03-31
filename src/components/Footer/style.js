@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 export const PageFooter = styled.footer`
+    min-width: 375px;
     width: 100%;
     height: 70px;
     background-color: #FFFFFF;

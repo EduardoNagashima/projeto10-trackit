@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 export const TodayPage = styled.main`
+    min-width: 375px;
+    width: 100%;
     margin: 0 auto;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     background: #E5E5E5;
     padding-top: 28px;
     padding: 20px;

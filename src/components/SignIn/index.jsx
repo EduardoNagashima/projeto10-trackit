@@ -1,9 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { Rings } from 'react-loader-spinner';
 
 import Logo from "./../../assets/logo.png";
-import { SignInScreen } from "./style";
+import { SignInScreen, Button, Input } from "./style";
 
 export default function SignIn() {
 
@@ -14,6 +15,12 @@ export default function SignIn() {
         image: '',
         password: ''
     });
+    const loader = <Rings
+        color="#FFF"
+        height="45"
+        width="303"
+        ariaLabel='loading'
+    />
 
     const navigate = useNavigate();
     function register(e) {
@@ -42,19 +49,19 @@ export default function SignIn() {
     function registerForm() {
         return (
             <form onSubmit={register}>
-                <input type="email" placeholder="email" value={info.email}
+                <Input type="email" placeholder="email" value={info.email}
                     onChange={e => setInfo({ ...info, email: e.target.value })}
                     required disabled={loading} />
-                <input type="password" placeholder="senha" value={info.password}
+                <Input type="password" placeholder="senha" value={info.password}
                     onChange={e => setInfo({ ...info, password: e.target.value })}
                     required disabled={loading} />
-                <input type="text" placeholder="name" value={info.name}
+                <Input type="text" placeholder="name" value={info.name}
                     onChange={e => setInfo({ ...info, name: e.target.value })}
                     required disabled={loading} />
-                <input type="text" placeholder="foto" value={info.image}
+                <Input type="text" placeholder="foto" value={info.image}
                     onChange={e => setInfo({ ...info, image: e.target.value })}
                     required disabled={loading} />
-                <button type="submit" disabled={loading}>Cadastrar</button>
+                <Button type="submit" disabled={loading}>{loading ? loader : 'Cadastrar'}</Button>
             </form>
         );
     }
