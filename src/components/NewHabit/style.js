@@ -34,18 +34,18 @@ export const Days = styled.div`
     justify-content: flex-start;
     gap:4px;
     margin-bottom: 29px;
+`
 
-    button{
-        font-family: 'Lexend Deca';
-        width: 30px;
-        height: 30px;
-        border: 1px solid #D5D5D5;
-        box-sizing: border-box;
-        border-radius: 5px;
-        font-size: 19.976px;
-        color: #DBDBDB;
-        background: #FFFFFF;
-    }
+export const DaysButton = styled.button`
+    font-family: 'Lexend Deca';
+    width: 30px;
+    height: 30px;
+    border: 1px solid #D5D5D5;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 19.976px;
+    color: ${props=> props.selected ? '#DBDBDB' : '#FFFFFF' };
+    background: ${props=> props.selected ? '#FFFFFF' : '#DBDBDB'};
 `
 
 export const Buttons = styled.div`
