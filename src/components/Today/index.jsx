@@ -6,7 +6,7 @@ import axios from "axios";
 import UserContext from "../../contexts/UserContext";
 import Footer from "../Footer";
 import Header from "./../Header";
-import { TodayPage, SectionHabit, HabitTittle, Day, CheckButton, Percent } from "./style";
+import { TodayPage, SectionHabit, HabitTittle, CurrentSeq, RecordSeq, Day, CheckButton, Percent } from "./style";
 
 export default function Today() {
 
@@ -39,7 +39,7 @@ export default function Today() {
     }
 
     function changePercentage() {
-        setPercentage((done / total) * 100);
+        setPercentage(Math.round((done / total) * 100));
     }
 
     function markHabit(id, done) {
@@ -75,8 +75,11 @@ export default function Today() {
             <SectionHabit key={id}>
                 <div>
                     <HabitTittle>{name}</HabitTittle>
-                    <p>Sequência atual: {currentSequence} dias</p>
-                    <p>Seu recorde: {highestSequence} dias</p>
+                    <small>Sequência atual:</small>
+                    <CurrentSeq done={done}> {currentSequence} dias</CurrentSeq>
+                    <br />
+                    <small>Seu recorde: </small>
+                    <RecordSeq hs={highestSequence} currentRecord={currentSequence === highestSequence} >{highestSequence} dias</RecordSeq>
                 </div>
                 <CheckButton onClick={() => markHabit(id, done)} done={done}>✓</CheckButton>
             </SectionHabit>

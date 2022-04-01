@@ -36,7 +36,7 @@ export const SectionHabit = styled.section`
 
     div{   
         width: 75%;
-        p {
+        small {
             font-size: 12.976px;
             color: #666666;
         }
@@ -69,4 +69,16 @@ export const CheckButton = styled.button`
 export const Percent = styled.span`
     font-size: 17.976px;
     color: ${props=>props.percentage ? '#8FC549' : '#BABABA'};
+`
+
+export const CurrentSeq = styled.p`
+    display: inline;
+    font-size: 12.976px;
+    color: ${props=>props.done ? '#8FC549' : '#666666'};
+`
+
+export const RecordSeq = styled.p`
+    display: inline;
+    font-size: 12.976px;
+    color: ${props=> props.currentRecord && props.hs !== 0 ? '#8FC549' : '#666666'};
 `
