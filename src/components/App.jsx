@@ -12,20 +12,21 @@ import UserContext from "../contexts/UserContext";
 
 export default function App() {
     const [token, setToken] = useState(null);
-    const [profileImg, setProfileImg] = useState('');
+    const [percentage, setPercentage] = useState(60);
+    const [profileImg, setProfileImg] = useState('https://www.fiscalti.com.br/wp-content/uploads/2021/02/default-user-image-365x365.png');
 
     return (
         <BrowserRouter>
-            <UserContext.Provider value={{ token, setToken }}>
+            <UserContext.Provider value={{ token, percentage, setPercentage, profileImg }}>
                 <Routes>
                     <Route path="/" element={<Home
                         saveToken={(token) => setToken(token)}
                         saveImg={(profileImg) => setProfileImg(profileImg)}
                     />} />
                     <Route path="/signIn" element={<SignIn />} />
-                    <Route path="/today" element={<Today img={profileImg} />} />
-                    <Route path="/historic" element={<Historic img={profileImg} />} />
-                    <Route path="/habits" element={<Habits img={profileImg} />} />
+                    <Route path="/today" element={<Today />} />
+                    <Route path="/historic" element={<Historic />} />
+                    <Route path="/habits" element={<Habits />} />
                 </Routes>
             </UserContext.Provider>
         </BrowserRouter>

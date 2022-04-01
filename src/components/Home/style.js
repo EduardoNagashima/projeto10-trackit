@@ -42,6 +42,7 @@ export const HomeScreen = styled.main`
         text-decoration-line: underline;
         align-self: center;
         color: #52B6FF;
+        margin-bottom: 15px;
     }
 `
 

@@ -7,7 +7,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 import { Main, UserHabits, NewHabitButton, Habit, Button } from "./style";
 
-export default function Habits({ img }) {
+export default function Habits() {
 
     const [habits, setHabits] = useState([]);
     const [newHabit, setNewHabit] = useState(false);
@@ -28,7 +28,8 @@ export default function Habits({ img }) {
             const { data } = response;
             setHabits(data);
         }).catch(err => {
-            console.log(err);
+            const errorMsg = err.response.data.message;
+            console.log(errorMsg);
         });
     }
 
@@ -59,7 +60,8 @@ export default function Habits({ img }) {
                 })
                 .catch(err => {
                     console.log(err);
-                    alert('Algo deu errado!');
+                    const errorMsg = err.response.data.message;
+                    alert('Algo deu errado! ' + errorMsg);
                 })
         }
     }
@@ -70,7 +72,7 @@ export default function Habits({ img }) {
 
     return (
         <>
-            <Header img={img} />
+            <Header />
             <Main>
                 <UserHabits>
                     <p>Meus hábitos</p>

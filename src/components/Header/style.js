@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const PageHeader = styled.header`
+    z-index: 1;
     min-width: 375px;
     width: 100%;
     height: 70px;

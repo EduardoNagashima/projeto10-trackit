@@ -35,8 +35,9 @@ export default function NewHabit({ reloadPage, closeNewHabit }) {
                 closeNewHabit();
                 reloadPage();
             }).catch(err => {
-                alert('Opa! Algo deu errado!')
+                const errorMsg = err.response.data.message;
                 console.log(err);
+                alert('Opa! Algo deu errado! ' + errorMsg)
             }).finally(() => {
                 setLoading(false);
             })
@@ -56,7 +57,6 @@ export default function NewHabit({ reloadPage, closeNewHabit }) {
 
     return (
         <CreateHabit>
-            {console.log(habit)}
             <form onSubmit={createHabit}>
                 <NewHabitInput type="text"
                     placeholder="nome do hábito"

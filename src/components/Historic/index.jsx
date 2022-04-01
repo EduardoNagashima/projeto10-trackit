@@ -2,10 +2,10 @@ import Header from "./../Header";
 import Footer from "../Footer";
 import { Main } from "./style";
 
-export default function Historic({ img }) {
+export default function Historic() {
     return (
         <>
-            <Header img={img} />
+            <Header />
             <Main>
                 <div>
                     <p>Histórico</p>

@@ -4,8 +4,10 @@ export const Main = styled.main`
     background: #E5E5E5;
     min-width: 375px;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     padding: 20px;
+    margin-bottom: 70px;
 
     span{
         font-size: 17.976px;
@@ -43,7 +45,8 @@ export const Habit = styled.div`
     margin: 0 auto;
     padding: 15px;
     width: 340px;
-    height: 91px;
+    min-height: 91px;
+    height: auto;
     background: #FFFFFF;
     border-radius: 5px;
     position: relative;

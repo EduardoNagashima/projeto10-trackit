@@ -39,6 +39,7 @@ export const SignInScreen = styled.section`
         text-align: center;
         text-decoration-line: underline;
         align-self: center;
+        margin-bottom: 15px;
     }
 `
 

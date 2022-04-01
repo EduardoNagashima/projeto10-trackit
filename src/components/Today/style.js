@@ -9,16 +9,21 @@ export const TodayPage = styled.main`
     background: #E5E5E5;
     padding-top: 28px;
     padding: 20px;
+    min-height: 100vh;
+    margin-bottom: 70px;
+    height: auto;
 
-    p{
-        color: #126BA5;
-        font-size: 22.976px;
-    }
-    
     span {
         font-size: 17.976px;
         color: #BABABA;
     }
+`
+
+export const Day = styled.h1`
+    margin: 0 auto;
+    font-size: 22.976px;
+    color: #126BA5;
+    margin-bottom: 4px;
 `
 
 export const SectionHabit = styled.section`
@@ -30,18 +35,7 @@ export const SectionHabit = styled.section`
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
-
-    button {
-        width: 69px;
-        height: 69px;
-        background: #EBEBEB;
-        border: 1px solid #E7E7E7;
-        box-sizing: border-box;
-        border-radius: 5px;
-        color: #FFFFFF;
-        font-size: 50px;
-        font-weight: 700;
-    }
+    margin-top: 10px;
 
     div{
 
@@ -56,5 +50,16 @@ export const HabitTittle = styled.h1`
     color: #666666;
     font-size: 19.976px;
     margin-bottom: 10px;
-    
+`
+
+export const CheckButton = styled.button`
+    width: 69px;
+    height: 69px;
+    background: #EBEBEB;
+    border: 1px solid #E7E7E7;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 50px;
+    font-weight: 700;
 `

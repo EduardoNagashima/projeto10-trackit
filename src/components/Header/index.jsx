@@ -1,11 +1,15 @@
 import { PageHeader } from "./style.js";
+import { useContext } from "react";
 
-export default function Header({ img }) {
-    const defaultImg = "https://www.fiscalti.com.br/wp-content/uploads/2021/02/default-user-image-365x365.png"
+import UserContext from "../../contexts/UserContext";
+
+export default function Header() {
+    const { profileImg } = useContext(UserContext);
+
     return (
         <PageHeader>
             <p>TrackIt</p>
-            <img src={img ? img : defaultImg} alt="profile-img" />
+            <img src={profileImg} alt="profile-img" />
         </PageHeader>
     )
 }
