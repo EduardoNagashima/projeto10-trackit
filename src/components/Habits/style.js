@@ -11,7 +11,6 @@ export const Main = styled.main`
 
     span{
         font-size: 17.976px;
-        line-height: 22px;
         color: #666666;
     }
 `
@@ -23,7 +22,6 @@ export const UserHabits = styled.div`
     margin-bottom: 20px;
 
     p{
-        font-weight: 400;
         font-size: 22.976px;
         color: #126BA5;
     }

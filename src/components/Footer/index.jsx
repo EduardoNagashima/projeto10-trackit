@@ -8,6 +8,7 @@ import UserContext from "../../contexts/UserContext";
 export default function Footer() {
 
     const { percentage } = useContext(UserContext);
+
     return (
         <PageFooter>
             <StyledLink to="/habits">

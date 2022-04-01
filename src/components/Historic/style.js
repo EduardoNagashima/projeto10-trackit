@@ -13,11 +13,7 @@ export const Main = styled.main`
         justify-content: space-between;
 
         p{
-            font-family: 'Lexend Deca';
-            font-style: normal;
-            font-weight: 400;
             font-size: 22.976px;
-            line-height: 29px;
             color: #126BA5;
             margin-bottom: 10px;
         }
