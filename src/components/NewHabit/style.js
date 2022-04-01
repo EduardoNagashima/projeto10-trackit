@@ -13,7 +13,7 @@ export const CreateHabit = styled.div`
 `
 
 export const NewHabitInput = styled.input`
-  font-family: 'Lexend Deca';
+        font-family: 'Lexend Deca';
         width: 303px;
         height: 45px;
         background-color: ${props=> props.disabled ? '#F2F2F2' : '#FFFFFF'};
@@ -39,6 +39,7 @@ export const Days = styled.div`
 `
 
 export const DaysButton = styled.button`
+    cursor: pointer;
     font-family: 'Lexend Deca';
     width: 30px;
     height: 30px;
@@ -56,6 +57,7 @@ export const Buttons = styled.div`
 `
 
 export const Button = styled.button`
+    cursor: pointer;
     width: 84px;
     height: 35px;
     font-family: 'Lexend Deca';
@@ -67,6 +69,7 @@ export const Button = styled.button`
 `
 
 export const ConfirmButton = styled.button`
+    cursor: pointer;
     width: 84px;
     height: 35px;
     font-family: 'Lexend Deca';

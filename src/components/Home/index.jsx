@@ -1,17 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Rings } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 
 import Logo from "../../assets/logo.png";
 import { HomeScreen, Input, Button } from "./style";
 import axios from "axios";
 
-export default function Home({ saveToken, saveImg }) {
+export default function Home({ saveToken, saveImg, token }) {
+
     const navigate = useNavigate();
+    if (token) {
+        navigate('/today');
+    }
     const [loading, setLoading] = useState(false);
-    const loader = <Rings
+    const loader = <ThreeDots
         color="#FFF"
-        height="45"
+        height="13"
         width="303"
         ariaLabel='loading'
     />
@@ -32,6 +36,8 @@ export default function Home({ saveToken, saveImg }) {
             const { data } = response;
             saveToken(data.token);
             saveImg(data.image);
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("img", data.image);
             navigate('/today');
         }).catch(err => {
             const errorMsg = err.response.data.message;

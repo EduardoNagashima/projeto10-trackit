@@ -1,17 +1,20 @@
 import { useContext, useState, useEffect } from "react";
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br'
+import { Triangle } from 'react-loader-spinner';
 import axios from "axios";
 
 import UserContext from "../../contexts/UserContext";
 import Footer from "../Footer";
 import Header from "./../Header";
-import { TodayPage, SectionHabit, HabitTittle, CurrentSeq, RecordSeq, Day, CheckButton, Percent } from "./style";
+import { TodayPage, SectionHabit, LoaderDiv, HabitTittle, CurrentSeq, RecordSeq, Day, CheckButton, Percent } from "./style";
 
 export default function Today() {
 
     const formatDay = (dayjs().format('dddd').charAt(0).toUpperCase() + dayjs().format('dddd, DD/MM').slice(1));
+    const loader = <LoaderDiv><Triangle color="#52B6FF" height={150} width={150} /></LoaderDiv>
     const [habits, setHabits] = useState([]);
+    const [loading, setLoading] = useState(false);
     const { percentage, setPercentage, token } = useContext(UserContext);
     const [total, setTotal] = useState(0);
     const [done, setDone] = useState(0);
@@ -20,6 +23,7 @@ export default function Today() {
     changePercentage();
 
     function getHabits() {
+        setLoading(true);
         const URL_API = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today';
         const config = {
             headers: {
@@ -36,6 +40,7 @@ export default function Today() {
             console.log(err.response.data.message);
         }).finally(() => {
             changePercentage();
+            setLoading(false);
         })
     }
 
@@ -93,7 +98,7 @@ export default function Today() {
             <TodayPage>
                 <Day>{formatDay}</Day>
                 <Percent percentage={percentage}>{percentage ? `${percentage}% dos hábitos concluídos` : 'Nenhum hábito concluído ainda'}</Percent>
-                {habitList}
+                {!loading ? habitList : loader}
             </TodayPage>
             <Footer />
         </>

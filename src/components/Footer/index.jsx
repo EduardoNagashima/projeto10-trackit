@@ -17,7 +17,7 @@ export default function Footer() {
                 <ProgressDiv>
                     <CircularProgressbar
                         value={percentage}
-                        text={percentage === 100 ? 'Parabéns!' : 'Hoje'}
+                        text={percentage === 100 ? 'Feito!' : 'Hoje'}
                         background
                         backgroundPadding={6}
                         styles={percentage === 100 ? buildStyles({
@@ -25,7 +25,7 @@ export default function Footer() {
                             textColor: "#52B6FF",
                             pathColor: "#ccf3ff",
                             trailColor: "transparent",
-                            textSize: "14px"
+                            textSize: "20px"
                         }) : buildStyles({
                             backgroundColor: "#52B6FF",
                             textColor: "#FFFFFF",

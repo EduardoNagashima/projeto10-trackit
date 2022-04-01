@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./../style/reset.css";
 import "./../style/style.css";
@@ -15,11 +15,16 @@ export default function App() {
     const [percentage, setPercentage] = useState(0);
     const [profileImg, setProfileImg] = useState('https://www.fiscalti.com.br/wp-content/uploads/2021/02/default-user-image-365x365.png');
 
+    useEffect(() => {
+        setToken(localStorage.getItem("token"));
+        setProfileImg(localStorage.getItem("img"));
+    }, []);
+
     return (
         <BrowserRouter>
             <UserContext.Provider value={{ token, percentage, setPercentage, profileImg }}>
                 <Routes>
-                    <Route path="/" element={<Home
+                    <Route path="/" element={<Home token={token}
                         saveToken={(token) => setToken(token)}
                         saveImg={(profileImg) => setProfileImg(profileImg)}
                     />} />

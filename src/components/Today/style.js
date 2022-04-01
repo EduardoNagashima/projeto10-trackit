@@ -85,3 +85,10 @@ export const RecordSeq = styled.p`
     font-size: 12.976px;
     color: ${props=> props.currentRecord && props.hs !== 0 ? '#8FC549' : '#666666'};
 `
+
+export const LoaderDiv = styled.div`
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`

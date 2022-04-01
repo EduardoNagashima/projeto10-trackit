@@ -1,19 +1,22 @@
 import { useState, useContext, useEffect } from "react";
+import { Triangle } from 'react-loader-spinner';
 import axios from "axios";
 
 import UserContext from "../../contexts/UserContext";
 import NewHabit from "../NewHabit";
 import Header from "../Header";
 import Footer from "../Footer";
-import { Main, UserHabits, NewHabitButton, Habit, Button } from "./style";
+import { Main, UserHabits, NewHabitButton, Habit, Button, LoaderDiv } from "./style";
 
 export default function Habits() {
 
     const [habits, setHabits] = useState([]);
     const [newHabit, setNewHabit] = useState(false);
     const { token } = useContext(UserContext);
-
+    const [loading, setLoading] = useState(false);
+    const loader = <LoaderDiv><Triangle color="#52B6FF" height={150} width={150} /></LoaderDiv>
     useEffect(() => {
+        setLoading(true);
         getHabit();
     }, []);
 
@@ -27,9 +30,12 @@ export default function Habits() {
         axios.get(API_URL, config).then(response => {
             const { data } = response;
             setHabits(data);
+
         }).catch(err => {
             const errorMsg = err.response.data.message;
             console.log(errorMsg);
+        }).finally(() => {
+            setLoading(false);
         });
     }
 
@@ -81,7 +87,8 @@ export default function Habits() {
                 {newHabit && <NewHabit
                     reloadPage={() => getHabit()}
                     closeNewHabit={() => toggleButton()} />}
-                {habits.length > 0 ? habitList : <span>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</span>}
+                {loading && loader}
+                {habits.length > 0 ? habitList : !loading && <span>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</span>}
             </Main>
             <Footer />
         </>

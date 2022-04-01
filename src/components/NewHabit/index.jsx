@@ -2,16 +2,16 @@ import axios from "axios";
 import { useState, useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import { Buttons, Button, Days, DaysButton, CreateHabit, ConfirmButton, NewHabitInput } from "./style";
-import { Rings } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 
 export default function NewHabit({ reloadPage, closeNewHabit }) {
     const [habit, setHabit] = useState('');
     const [days, setDays] = useState([]);
     const [loading, setLoading] = useState(false);
     const { token } = useContext(UserContext);
-    const loader = <Rings
+    const loader = <ThreeDots
         color="#FFF"
-        height="35"
+        height="13"
         width="84"
         ariaLabel='loading'
     />

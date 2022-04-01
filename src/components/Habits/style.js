@@ -30,6 +30,7 @@ export const UserHabits = styled.div`
 `
 
 export const NewHabitButton = styled.button`
+    cursor: pointer;
     width: 40px;
     height: 35px;
     background: #52B6FF;
@@ -61,7 +62,8 @@ export const Habit = styled.div`
     }
 
     ion-icon {
-        font-size: 15px;
+        cursor: pointer;
+        font-size: 18px;
         position: absolute;
         top: 11px;
         right: 10px;
@@ -79,4 +81,11 @@ export const Button = styled.button`
         border-radius: 5px;
         font-size: 19.976px;
         line-height: 25px;
+`
+
+export const LoaderDiv = styled.div`
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
