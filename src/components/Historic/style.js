@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Main = styled.main`
+    margin: 0 auto;
     background: #E5E5E5;
     min-width: 375px;
     width: 100%;
@@ -8,10 +9,8 @@ export const Main = styled.main`
     padding: 20px;
  
     div{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
+        margin: 0 auto;
+        margin-bottom: 10px;
         p{
             font-size: 22.976px;
             color: #126BA5;

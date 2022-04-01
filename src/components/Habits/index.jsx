@@ -13,6 +13,7 @@ export default function Habits() {
     const [habits, setHabits] = useState([]);
     const [newHabit, setNewHabit] = useState(false);
     const { token } = useContext(UserContext);
+    const [draft, setDraft] = useState('');
     const [loading, setLoading] = useState(false);
     const loader = <LoaderDiv><Triangle color="#52B6FF" height={150} width={150} /></LoaderDiv>
     useEffect(() => {
@@ -84,9 +85,7 @@ export default function Habits() {
                     <p>Meus hábitos</p>
                     <NewHabitButton onClick={toggleButton}>+</NewHabitButton>
                 </UserHabits>
-                {newHabit && <NewHabit
-                    reloadPage={() => getHabit()}
-                    closeNewHabit={() => toggleButton()} />}
+                {newHabit && <NewHabit reloadPage={() => getHabit()} closeNewHabit={() => toggleButton()} getDraft={(draft) => setDraft(draft)} draft={draft} />}
                 {loading && loader}
                 {habits.length > 0 ? habitList : !loading && <span>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</span>}
             </Main>

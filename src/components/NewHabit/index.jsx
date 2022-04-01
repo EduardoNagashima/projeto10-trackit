@@ -4,7 +4,7 @@ import UserContext from "../../contexts/UserContext";
 import { Buttons, Button, Days, DaysButton, CreateHabit, ConfirmButton, NewHabitInput } from "./style";
 import { ThreeDots } from 'react-loader-spinner';
 
-export default function NewHabit({ reloadPage, closeNewHabit }) {
+export default function NewHabit({ reloadPage, closeNewHabit, getDraft, draft }) {
     const [habit, setHabit] = useState('');
     const [days, setDays] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -15,7 +15,6 @@ export default function NewHabit({ reloadPage, closeNewHabit }) {
         width="84"
         ariaLabel='loading'
     />
-
     function createHabit(e) {
         e.preventDefault();
 
@@ -55,13 +54,20 @@ export default function NewHabit({ reloadPage, closeNewHabit }) {
         setDays([...days, num])
     }
 
+    function hasDraft() {
+        if (habit) {
+            getDraft(habit);
+        }
+        closeNewHabit();
+    }
+
     return (
         <CreateHabit>
             <form onSubmit={createHabit}>
                 <NewHabitInput type="text"
                     placeholder="nome do hábito"
                     onChange={e => setHabit(e.target.value)}
-                    value={habit}
+                    value={draft ? draft : habit}
                     disabled={loading}
                     required />
                 <Days>
@@ -73,7 +79,8 @@ export default function NewHabit({ reloadPage, closeNewHabit }) {
                 </Days>
 
                 <Buttons>
-                    <Button disabled={loading} type="button" cancel onClick={() => closeNewHabit()}>Cancelar</Button>
+                    <Button disabled={loading} type="button"
+                        onClick={() => hasDraft()}>Cancelar</Button>
                     <ConfirmButton disabled={loading} type="submit">{loading ? loader : 'Salvar'}</ConfirmButton>
                 </Buttons>
             </form>

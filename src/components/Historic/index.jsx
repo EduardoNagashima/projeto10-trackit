@@ -1,5 +1,6 @@
 import Header from "./../Header";
-import Footer from "../Footer";
+import Footer from "./../Footer";
+import HabitCalendar from "./../HabitCalendar"
 import { Main } from "./style";
 
 export default function Historic() {
@@ -9,8 +10,8 @@ export default function Historic() {
             <Main>
                 <div>
                     <p>Histórico</p>
-                    <span>Em breve você poderá ver o histórico dos seus hábitos aqui!</span>
                 </div>
+                <HabitCalendar />
             </Main>
             <Footer />
         </>
