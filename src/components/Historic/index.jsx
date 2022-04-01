@@ -9,7 +9,7 @@ export default function Historic() {
             <Main>
                 <div>
                     <p>Histórico</p>
-                    <span>Em breve você pçoderá ver o histórico dos seus hábitos aqui!</span>
+                    <span>Em breve você poderá ver o histórico dos seus hábitos aqui!</span>
                 </div>
             </Main>
             <Footer />

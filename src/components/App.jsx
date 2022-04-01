@@ -12,7 +12,7 @@ import UserContext from "../contexts/UserContext";
 
 export default function App() {
     const [token, setToken] = useState(null);
-    const [percentage, setPercentage] = useState(60);
+    const [percentage, setPercentage] = useState(0);
     const [profileImg, setProfileImg] = useState('https://www.fiscalti.com.br/wp-content/uploads/2021/02/default-user-image-365x365.png');
 
     return (

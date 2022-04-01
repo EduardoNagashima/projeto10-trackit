@@ -57,6 +57,7 @@ export const Habit = styled.div`
         line-height: 25px;
         color: #666666;
         margin-bottom: 10px;
+        word-wrap: break-word;
     }
 
     ion-icon {

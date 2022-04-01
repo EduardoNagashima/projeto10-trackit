@@ -12,11 +12,6 @@ export const TodayPage = styled.main`
     min-height: 100vh;
     margin-bottom: 70px;
     height: auto;
-
-    span {
-        font-size: 17.976px;
-        color: #BABABA;
-    }
 `
 
 export const Day = styled.h1`
@@ -30,15 +25,17 @@ export const SectionHabit = styled.section`
     padding: 15px;
     margin: 0 auto;
     width: 340px;
-    height: 94px;
+    min-height: 94px;
+    height: auto;
     background: #FFFFFF;
     border-radius: 5px;
     display: flex;
-    justify-content: space-between;
     margin-top: 10px;
+    align-items: center;
+    justify-content: space-between;
 
-    div{
-
+    div{   
+        width: 75%;
         p {
             font-size: 12.976px;
             color: #666666;
@@ -47,19 +44,29 @@ export const SectionHabit = styled.section`
 `
 
 export const HabitTittle = styled.h1`
+    word-wrap: break-word;
     color: #666666;
     font-size: 19.976px;
     margin-bottom: 10px;
 `
 
 export const CheckButton = styled.button`
-    width: 69px;
-    height: 69px;
-    background: #EBEBEB;
+    cursor: pointer;
+    box-sizing: border-box;
+    min-width: 69px;
+    min-height: 69px;
+    max-width: 69px;
+    max-height: 69px;
+    background: ${props=> props.done ? '#8FC549' : '#E7E7E7'};
     border: 1px solid #E7E7E7;
     box-sizing: border-box;
     border-radius: 5px;
     color: #FFFFFF;
     font-size: 50px;
     font-weight: 700;
+`
+
+export const Percent = styled.span`
+    font-size: 17.976px;
+    color: ${props=>props.percentage ? '#8FC549' : '#BABABA'};
 `
