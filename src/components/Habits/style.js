@@ -20,7 +20,7 @@ export const UserHabits = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
     p{
         font-weight: 400;

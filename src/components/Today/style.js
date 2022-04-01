@@ -51,7 +51,9 @@ export const HabitTittle = styled.h1`
 `
 
 export const CheckButton = styled.button`
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     min-width: 69px;
     min-height: 69px;
@@ -62,8 +64,9 @@ export const CheckButton = styled.button`
     box-sizing: border-box;
     border-radius: 5px;
     color: #FFFFFF;
-    font-size: 50px;
+    font-size: 45px;
     font-weight: 700;
+    cursor: pointer;
 `
 
 export const Percent = styled.span`

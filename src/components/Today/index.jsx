@@ -10,6 +10,7 @@ import { TodayPage, SectionHabit, HabitTittle, CurrentSeq, RecordSeq, Day, Check
 
 export default function Today() {
 
+    const formatDay = (dayjs().format('dddd').charAt(0).toUpperCase() + dayjs().format('dddd, DD/MM').slice(1));
     const [habits, setHabits] = useState([]);
     const { percentage, setPercentage, token } = useContext(UserContext);
     const [total, setTotal] = useState(0);
@@ -90,7 +91,7 @@ export default function Today() {
         <>
             <Header />
             <TodayPage>
-                <Day>{dayjs().format('dddd, DD/MM')}</Day>
+                <Day>{formatDay}</Day>
                 <Percent percentage={percentage}>{percentage ? `${percentage}% dos hábitos concluídos` : 'Nenhum hábito concluído ainda'}</Percent>
                 {habitList}
             </TodayPage>

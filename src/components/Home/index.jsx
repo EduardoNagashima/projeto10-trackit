@@ -34,7 +34,6 @@ export default function Home({ saveToken, saveImg }) {
             saveImg(data.image);
             navigate('/today');
         }).catch(err => {
-            console.log(err);
             const errorMsg = err.response.data.message;
             alert(`Opa! ${errorMsg}`);
         }).finally(() => {

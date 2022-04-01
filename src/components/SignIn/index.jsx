@@ -38,7 +38,6 @@ export default function SignIn() {
             navigate("/");
         }).catch(err => {
             const errorMsg = err.response.data.message
-            console.log(err.response);
             alert(`Erro!!! ${errorMsg}`)
         }).finally(() => {
             setLoading(false);

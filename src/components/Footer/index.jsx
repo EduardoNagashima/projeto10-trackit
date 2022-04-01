@@ -7,8 +7,7 @@ import UserContext from "../../contexts/UserContext";
 
 export default function Footer() {
 
-    const { percentage, setPercentage } = useContext(UserContext);
-
+    const { percentage } = useContext(UserContext);
     return (
         <PageFooter>
             <StyledLink to="/habits">
@@ -18,10 +17,16 @@ export default function Footer() {
                 <ProgressDiv>
                     <CircularProgressbar
                         value={percentage}
-                        text={'Today'}
+                        text={percentage === 100 ? 'Parabéns!' : 'Hoje'}
                         background
                         backgroundPadding={6}
-                        styles={buildStyles({
+                        styles={percentage === 100 ? buildStyles({
+                            backgroundColor: "#f7f7f7",
+                            textColor: "#52B6FF",
+                            pathColor: "#ccf3ff",
+                            trailColor: "transparent",
+                            textSize: "14px"
+                        }) : buildStyles({
                             backgroundColor: "#52B6FF",
                             textColor: "#FFFFFF",
                             pathColor: "#FFFFFF",
