@@ -5,6 +5,7 @@ import { Triangle } from 'react-loader-spinner';
 import axios from "axios";
 
 import UserContext from "../../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 import Header from "./../Header";
 import { TodayPage, SectionHabit, LoaderDiv, HabitTittle, CurrentSeq, RecordSeq, Day, CheckButton, Percent } from "./style";
@@ -18,7 +19,12 @@ export default function Today() {
     const { percentage, setPercentage, token } = useContext(UserContext);
     const [total, setTotal] = useState(0);
     const [done, setDone] = useState(0);
+    const navigate = useNavigate();
     dayjs.locale('pt-br');
+
+    if (!token) {
+        navigate('/');
+    }
 
     changePercentage();
 

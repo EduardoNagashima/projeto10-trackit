@@ -7,15 +7,22 @@ import NewHabit from "../NewHabit";
 import Header from "../Header";
 import Footer from "../Footer";
 import { Main, UserHabits, NewHabitButton, Habit, Button, LoaderDiv } from "./style";
+import { useNavigate } from "react-router-dom";
 
 export default function Habits() {
 
+    const navigate = useNavigate();
     const [habits, setHabits] = useState([]);
     const [newHabit, setNewHabit] = useState(false);
     const { token } = useContext(UserContext);
     const [draft, setDraft] = useState('');
     const [loading, setLoading] = useState(false);
     const loader = <LoaderDiv><Triangle color="#52B6FF" height={150} width={150} /></LoaderDiv>
+
+    if (!token) {
+        navigate('/');
+    }
+
     useEffect(() => {
         setLoading(true);
         getHabit();
@@ -92,4 +99,4 @@ export default function Habits() {
             <Footer />
         </>
     );
-}
+} 
